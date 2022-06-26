@@ -1,6 +1,6 @@
 #!/bin/bash
 
-filename='CaseControl_1-9.list'
+filename='CaseControl_1-10.list'
 DirName='Merge_Fabry_total_70'
 current_dir='/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_total_70/'
 
