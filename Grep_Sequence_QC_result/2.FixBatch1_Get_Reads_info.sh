@@ -70,7 +70,7 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
 
 
 	# Total Variants (Raw .vcf.gz)
-	#gunzip ${vcfgz_path}${line}.vcf.gz
+	gunzip ${vcfgz_path}${line}.vcf.gz
 	TotalVariants_with_header=`cat ${vcfgz_path}${line}.vcf | wc -l`
 	TotalVariants=`echo "$TotalVariants_with_header - 3390" | bc`
 	echo -e "$TotalVariants_with_header = $TotalVariants + 3390"
