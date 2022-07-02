@@ -33,8 +33,8 @@ Output_report_txt = 'SNV_Deletion_Insertion_{}_report.txt'.format(Amount_of_Samp
 f_out_report = open(Output_FilePath + Output_report_txt, 'w')
 
 
-# Dictionary ==> SampleID : {'CNV': 700, 'Deletion': 200, 'Insertion': 300, 'others': 50}
-CNV_Del_Ins_dict = defaultdict(lambda: defaultdict(lambda: 0))
+# Dictionary ==> SampleID : {'SNV': 700, 'Deletion': 200, 'Insertion': 300, 'others': 50}
+SNV_Del_Ins_dict = defaultdict(lambda: defaultdict(lambda: 0))
 
 for vcf_file in VCF_samplelist:
 	vcf_file = vcf_file.strip()
@@ -50,13 +50,13 @@ for vcf_file in VCF_samplelist:
 					VariantsType = Judge_TypesOfGeneticVariation(line_list)
 					#print(line_list[0:5], '【', VariantsType, '】')
 					if VariantsType == 'SNV':
-						CNV_Del_Ins_dict[vcf_file]['SNV'] += 1
+						SNV_Del_Ins_dict[vcf_file]['SNV'] += 1
 					elif VariantsType == 'Deletion':
-						CNV_Del_Ins_dict[vcf_file]['Deletion'] += 1
+						SNV_Del_Ins_dict[vcf_file]['Deletion'] += 1
 					elif VariantsType == 'Insertion':
-						CNV_Del_Ins_dict[vcf_file]['Insertion'] += 1
+						SNV_Del_Ins_dict[vcf_file]['Insertion'] += 1
 					elif VariantsType == 'others':
-						CNV_Del_Ins_dict[vcf_file]['others'] += 1
+						SNV_Del_Ins_dict[vcf_file]['others'] += 1
 					else:
 						print(line_list[0:5])
 				except:
@@ -65,6 +65,6 @@ for vcf_file in VCF_samplelist:
 
 
 f_out_report.write('SampleID\tSNV\tDeletion\tInsertion\tothers\n')
-for SampleID in CNV_Del_Ins_dict.keys():
-	f_out_report.write('{}\t{}\t{}\t{}\t{}\n'.format(SampleID, CNV_Del_Ins_dict[SampleID]['SNV'], CNV_Del_Ins_dict[SampleID]['Deletion'], CNV_Del_Ins_dict[SampleID]['Insertion'], CNV_Del_Ins_dict[SampleID]['others']))
+for SampleID in SNV_Del_Ins_dict.keys():
+	f_out_report.write('{}\t{}\t{}\t{}\t{}\n'.format(SampleID, SNV_Del_Ins_dict[SampleID]['SNV'], SNV_Del_Ins_dict[SampleID]['Deletion'], SNV_Del_Ins_dict[SampleID]['Insertion'], SNV_Del_Ins_dict[SampleID]['others']))
 f_out_report.close()
