@@ -12,7 +12,12 @@ awk '{if(/^#/)print;else exit}' ${current_dir}${disease}_${Amount_of_Samples}.me
 
 # Modify header
 sed '1,49!d' ${current_dir}header_VCF.txt > ${current_dir}NEW_UP_header_VCF.txt
+
+## (1)【 While use bcftools merge 】
 sed '3391,3393!d' ${current_dir}header_VCF.txt > ${current_dir}NEW_DOWN_header_VCF.txt
+## (2)【 While use bcftools concat 】
+#sed '3391,3397!d' ${current_dir}header_VCF.txt > ${current_dir}NEW_DOWN_header_VCF.txt
+
 cat ${current_dir}NEW_UP_header_VCF.txt ${current_dir}NEW_DOWN_header_VCF.txt > ${current_dir}NEW_header_VCF.txt
 
 
