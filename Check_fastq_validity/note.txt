@@ -1,0 +1,4 @@
+執行指令：
+$ perl Check_fastq_validity.pl Check_fastq_validity.conf
+
+記得修改 Check_fastq_validity.conf ！！！
