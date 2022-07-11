@@ -30,12 +30,12 @@ with open(Input_VCF_FilePath + Input_VCF_FileName, 'r') as f:
 	while line != '':
 		if ('#' in line) and ('#CHROM' in line):
 			line_list = line.split('\t')
-			f_out_ChrPos.write('{}\t{}\n'.format(line_list[0], line_list[1]))
+			f_out_ChrPos.write('{}\t{}\t{}\t{}\n'.format(line_list[0], line_list[1], line_list[3], line_list[4]))
 		elif ('#' in line):
 			pass
 		else:
 			line_list = line.split('\t')
-			f_out_ChrPos.write('{}\t{}\n'.format(line_list[0], line_list[1]))
+			f_out_ChrPos.write('{}\t{}\t{}\t{}\n'.format(line_list[0], line_list[1], line_list[3], line_list[4]))
 		line = f.readline()
 f_out_ChrPos.close()
 
