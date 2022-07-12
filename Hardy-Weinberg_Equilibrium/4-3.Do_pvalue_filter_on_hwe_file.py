@@ -18,15 +18,15 @@ os.system("[ ! -d {} ] && mkdir -p {}".format(Output_FilePath, Output_FilePath))
 Output_HWE_filter_prefix="{}_{}_HWE_Filter_p-value_{}".format(disease, Amount_of_Samples, P_value)
 
 
-# Filter SNP & p-value < 0.0001
+# Filter Variants ( p-value < 0.0001 )
 # ========== 備註 ========== #
-# | 目的                              | 使用軟體工具    | 軟體工具版本  |
-# | --------------------------------- | --------------- | ------------- |
-# | 篩選 p-value 小於 0.0001 的 SNP   | Linux Command   |               |
+# | 目的                                 | 使用軟體工具       | 軟體工具版本       |
+# | ------------------------------------ | ------------------ | ------------------ |
+# | 篩選 p-value 小於 0.0001 的 SNP      | Linux Command      |                    |
 
-# | 參數設定              | 參數設定的備註                              |
-# | --------------------- | ------------------------------------------- |
-# | p-value < 0.0001      |                                             |
+# | 參數設定              | 參數設定的備註                                         |
+# | --------------------- | ------------------------------------------------------ |
+# | p-value < 0.0001      | HWE significant different variants (Need to be delete) |
 
 os.system(r"""awk '{if($13 < %s) print $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13}' OFS='\t' %s > %s""" % (P_value, Input_FilePath + Input_ALL_FileName, MidOutput_FilePath + MidOutput_HWE_filter_prefix + '_ALL.txt'))
 os.system(r"""awk '{if($13 < %s) print $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13}' OFS='\t' %s > %s""" % (P_value, Input_FilePath + Input_AFF_FileName, MidOutput_FilePath + MidOutput_HWE_filter_prefix + '_AFF.txt'))
