@@ -22,7 +22,7 @@ eigenvec$CaseControl <- factor(eigenvec$CaseControl, levels=c("Case","Control"))
 # Generate Plot 1: PCA single-plot
 PCA_1 <- ggplot(data = eigenvec, mapping = aes(x = PC1, y = PC2, color = CaseControl)) + 
   geom_point() + 
-  geom_text(label = rownames(eigenvec), size = 2, nudge_x = 0.01, nudge_y = 0.05)
+  geom_text(label = rownames(eigenvec), size = 2, nudge_x = 0.005, nudge_y = 0.015)
 
 ggsave("plot1_PCA_Expt1_HWE_Filtered_0.0001.pdf")
 
