@@ -4,6 +4,45 @@ library(ggplot2)
 
 setwd('/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/Replaced_header_vcf/HardyWeinberg_result/Create_HWE_filtered_VCF/')
 
+
+################# START: Scree plot & Cumulative Proportion of Variance Explained plot #################
+# Scree plot -> choose principle componets
+tiff(filename = "1_screeplot0_PCA_Expt5_HWE_Filtered_0.0005.tiff", height=6, width=8, units='in', res=600)
+
+eigenval <- read.table("FabryDisease_93_HWE_Filtered_0.0005_PCA_Expt5.eigenval")$V1
+plot(x=seq(1:length(eigenval)), y=eigenval, type="o", xlab="Principle Component", ylab="Variance")
+dev.off()
+
+# Percentage of explained variance
+val <- read.table("FabryDisease_93_HWE_Filtered_0.0005_PCA_Expt5.eigenval")
+
+pdf("2_screeplot0_PCA_Expt5_HWE_Filtered_0.0005.pdf")
+PC1PC2_plot1 = plot(val$V1[1:pca_num], type="o", pch=18, cex=0.8,
+     xlab = "Principal Component",
+     ylab = "Proportion of Variance Explained")
+dev.off()
+
+# Cumulative Proportion of Variance Explained plot
+val <- read.table("FabryDisease_93_HWE_Filtered_0.0005_PCA_Expt5.eigenval")
+val$cumulative_percentage = 100*cumsum(val$V1)/sum(val$V1)
+
+pdf("3_Cumulative-Proportion-of-Variance-Explained-Plot0_PCA_Expt5_HWE_Filtered_0.0005.pdf")
+per = val$cumulative_percentage
+Cumulative_Plot = plot(cumsum(val$V1[1:20]), type="b", pch=18, cex=0.8,
+     xlab = "Principal Component",
+     ylab = "Cumulative Proportion of Variance Explained")
+dev.off()
+
+# PC1 PC2 plot
+pca_num = 20
+vec <- read.table("FabryDisease_93_HWE_Filtered_0.0005_PCA_Expt5.eigenvec")
+colnames(vec) <- c("FID", "IID", paste0(rep("PC", pca_num), c(1:pca_num)))
+PC1PC2_plot0 = ggplot(vec, aes(x=PC1, y=PC2)) + geom_point() + theme_classic() + theme(plot.title = element_text(hjust=0.5)) 
+ggsave("2_PC1PC2-plot0_PCA_Expt5_HWE_Filtered_0.0005.png")
+################# END: Scree plot & Cumulative Proportion of Variance Explained plot #################
+
+
+
 # Read .eigenvec
 eigenvec <- read.table('Fabry_Aging_186_HWE_Filtered_0.0001_PCA_Expt1.eigenvec', header=FALSE, skip=0, sep=' ')
 rownames(eigenvec) <- eigenvec[,2]
