@@ -1,4 +1,4 @@
-install.packages("tidyverse", repos="http://cran.us.r-project.org")
+#install.packages("tidyverse", repos="http://cran.us.r-project.org")
 library(tidyverse)
 library(ggplot2)
 
@@ -28,9 +28,9 @@ val$cumulative_percentage = 100*cumsum(val$V1)/sum(val$V1)
 
 pdf("3_Cumulative-Proportion-of-Variance-Explained-Plot0_PCA_Expt5_HWE_Filtered_0.0005.pdf")
 per = val$cumulative_percentage
-Cumulative_Plot = plot(cumsum(val$V1[1:20]), type="b", pch=18, cex=0.8,
-     xlab = "Principal Component",
-     ylab = "Cumulative Proportion of Variance Explained")
+Cumulative_Plot = plot(val$cumulative_percentage[1:20], type="b", pch=18, cex=0.8,
+                       xlab = "Principal Component",
+                       ylab = "Cumulative Proportion of Variance Explained")
 dev.off()
 
 # PC1 PC2 plot
