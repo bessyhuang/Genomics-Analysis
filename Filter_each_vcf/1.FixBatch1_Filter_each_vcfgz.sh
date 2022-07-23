@@ -1,10 +1,10 @@
 #!/bin/bash
 
-filename='CaseControl_1-70.list'
-current_dir='/staging/reserve/aging/chia2831/FabryDisease/Output/Farby/VCF/'
+filename='CaseControl_1-2093.list'
+current_dir='/staging/reserve/aging/chia2831/2000_genome_VCFgz/'
 
 ## Check for dir, if not found create it using the mkdir ##
-create_dir="/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_total_70/recode_vcf/"
+create_dir="/staging/reserve/aging/chia2831/2000_genome_VCFgz/recode_vcf/"
 [ ! -d "$create_dir" ] && mkdir -p "$create_dir"
 output_path=${create_dir}
 

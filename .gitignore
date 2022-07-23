@@ -11,3 +11,6 @@
 
 pkg/
 src/
+
+*.err
+*.std
