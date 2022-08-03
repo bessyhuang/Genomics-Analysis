@@ -1,21 +1,19 @@
 import os
 
-CaseControl_table = 'CaseControl_record_table_93.txt'
+CaseControl_table = 'CaseControl_record_table_186.txt'
 
-FilePath = '/staging/reserve/aging/chia2831/FabryDisease/Fabry_Data_93/Extract_Specific_Gene_Position/'
-Filename = 'new_FabryDisease_93_GLA_IVS4_gene.merge.vcf'
+FilePath = '/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/HardyWeinberg_result/Extract_Specific_Gene_Position/'
+Filename = 'new_FabryDisease_186_GLA_IVS4_gene.merge.vcf'
 
-Disease = 'FD'
-Amount_of_Samples = '93'
+Disease = 'FD_Aging'
+Amount_of_Samples = '186'
 GeneName = 'GLA_IVS4'
 Output_File_prefix = '{}_{}_{}_gene.merge'.format(Disease, Amount_of_Samples, GeneName)
 
 
-Output_FilePath = '/staging/reserve/aging/chia2831/FabryDisease/Fabry_Data_93/Haploview_input_file/'
+Output_FilePath = '/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/HardyWeinberg_result/Extract_Specific_Gene_Position/Haploview_input_file/'
 Output_Filename = '{}_{}_{}_gene_for_Haploview'.format(Disease, Amount_of_Samples, GeneName)
 os.system('[ ! -d {} ] && mkdir -p {}'.format(Output_FilePath, Output_FilePath))
-
-
 
 
 os.system("ln -s /opt/ohpc/Taiwania3/pkg/biology/PLINK/PLINK_v1.90/plink /staging/reserve/aging/chia2831/bin/plink")
