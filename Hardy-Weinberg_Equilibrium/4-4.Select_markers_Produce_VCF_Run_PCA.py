@@ -10,23 +10,24 @@ e.g. \n\
 (4) AFF_markers (significant) & UNAFF_markers (no significant) \n\
 (5) UNAFF_markers (significant) & AFF_markers (no significant) \n\
 (6) Total markers (no significant) \n\
-(7) No filter any Marker\n\n> ")
+(7) No filter any Marker \n\
+(8) Remove ALL_markers (Remove significant == Save good quality) \n\n> ")
 
 disease = 'Fabry_Aging'
 Amount_of_Samples = '186'
-P_value = '0.0001'
+P_value = '0.0002'
 
-CaseControl_table = 'CaseControl_record_table_186.txt'
+CaseControl_table = 'Fabry_record_table_93.txt'
 
-Input_VCF_FilePath='/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/Replaced_header_vcf/'
+Input_VCF_FilePath = '/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/Replaced_header_vcf/'
 Input_VCF_FileName = 'new_Fabry_Aging_186.merge.vcf'
 
-Input_HWE_FilePath='/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/Replaced_header_vcf/HardyWeinberg_result/Filter_SNP_Pvalue/'
+Input_HWE_FilePath = '/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/HardyWeinberg_result/Filter_SNP_Pvalue/'
 Input_HWE_filtered_ALL_FileName = "{}_{}_HWE_Filter_p-value_{}_ALL.txt".format(disease, Amount_of_Samples, P_value)
 Input_HWE_filtered_AFF_FileName = "{}_{}_HWE_Filter_p-value_{}_AFF.txt".format(disease, Amount_of_Samples, P_value)
 Input_HWE_filtered_UNAFF_FileName = "{}_{}_HWE_Filter_p-value_{}_UNAFF.txt".format(disease, Amount_of_Samples, P_value)
 
-Output_FilePath='/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/Replaced_header_vcf/HardyWeinberg_result/Create_HWE_filtered_VCF/'
+Output_FilePath = '/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/HardyWeinberg_result/Create_HWE_filtered_VCF/'
 os.system("[ ! -d {} ] && mkdir -p {}".format(Output_FilePath, Output_FilePath))
 Output_HWE_filtered_VCF_FileName = "{}_{}_HWE_Filtered_p-value_{}_Expt{}.vcf".format(disease, Amount_of_Samples, P_value, MarkersSet_type)
 Output_HWE_filtered_bfile_prefix = "{}_{}_HWE_Filtered_{}_bfile_Expt{}".format(disease, Amount_of_Samples, P_value, MarkersSet_type)
@@ -108,6 +109,8 @@ def Final_selected_markers_dict(MarkersSet_type, HWE_ALL_dict, HWE_AFF_dict, HWE
 		return selected_markers_dict		
 	elif MarkersSet_type == 'No filter any Marker' or MarkersSet_type == '7':
 		return None
+	elif MarkersSet_type == 'Remove ALL_markers (Remove significant == Save good quality)' or MarkersSet_type == '8':
+		return HWE_ALL_dict
 
 # Read selected markers file (HWE p-value < 0.0001)
 with open(Input_HWE_FilePath + Input_HWE_filtered_ALL_FileName, 'r') as f_in:
@@ -146,6 +149,16 @@ with open(Input_VCF_FilePath + Input_VCF_FileName, 'r') as f:
 		elif MarkersSet_type == 'No filter any Marker' or MarkersSet_type == '7':
 			# Equal to `RAW VCF file` (no filter, input all VCF markers then do PCA)
 			f_out.write(line)
+		elif MarkersSet_type == 'Remove ALL_markers (Remove significant == Save good quality)' or MarkersSet_type == '8':
+			line_list = line.split('\t')
+			VCF_chrN = line_list[0]
+			VCF_pos = line_list[1]
+			
+			# Total markers - [ ALL (sig.) markers ]
+			if VCF_pos in Selected_Markers_dict[VCF_chrN]:
+				pass
+			else:
+				f_out.write(line)
 		else:
 			line_list = line.split('\t')
 			VCF_chrN = line_list[0]

@@ -3,13 +3,13 @@ import os
 Input_VCF_FilePath = '/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/Replaced_header_vcf/'
 Input_VCF_FileName = 'new_Fabry_Aging_186.merge.vcf'
 
-Input_HWE_FilePath = '/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/Replaced_header_vcf/HardyWeinberg_result/'
+Input_HWE_FilePath = '/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/HardyWeinberg_result/'
 Input_HWE_FileName = 'Fabry_Aging_186_HWE.hwe'
 
 disease='Fabry_Aging'
 Amount_of_Samples='186'
 
-Output_FilePath='/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/Replaced_header_vcf/HardyWeinberg_result/Add_ChrPos_on_ALL_AFF_UNAFF/'
+Output_FilePath = '/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/HardyWeinberg_result/Add_ChrPos_on_ALL_AFF_UNAFF/'
 os.system("[ ! -d {} ] && mkdir -p {}".format(Output_FilePath, Output_FilePath))
 
 Output_ChrPos_FileName = 'HWE_ChrPos_{}_{}.txt'.format(disease, Amount_of_Samples)

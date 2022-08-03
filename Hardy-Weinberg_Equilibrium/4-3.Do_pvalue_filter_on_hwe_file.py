@@ -1,19 +1,19 @@
 import os
 
-Input_FilePath = '/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/Replaced_header_vcf/HardyWeinberg_result/Add_ChrPos_on_ALL_AFF_UNAFF/'
+Input_FilePath = '/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/HardyWeinberg_result/Add_ChrPos_on_ALL_AFF_UNAFF/'
 Input_ALL_FileName = 'ALL_HWE_with_ChrPos.txt'
 Input_AFF_FileName = 'AFF_HWE_with_ChrPos.txt'
 Input_UNAFF_FileName = 'UNAFF_HWE_with_ChrPos.txt'
 
 disease = 'Fabry_Aging'
 Amount_of_Samples = '186'
-P_value = '0.0001'
+P_value = '0.0002'
 
-MidOutput_FilePath='/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/Replaced_header_vcf/HardyWeinberg_result/MiddleOutput_Filter_SNP_Pvalue/'
+MidOutput_FilePath = '/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/HardyWeinberg_result/MiddleOutput_Filter_SNP_Pvalue/'
 os.system("[ ! -d {} ] && mkdir -p {}".format(MidOutput_FilePath, MidOutput_FilePath))
 MidOutput_HWE_filter_prefix="{}_{}_HWE_Filter_p-value_{}".format(disease, Amount_of_Samples, P_value)
 
-Output_FilePath='/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/Replaced_header_vcf/HardyWeinberg_result/Filter_SNP_Pvalue/'
+Output_FilePath = '/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/HardyWeinberg_result/Filter_SNP_Pvalue/'
 os.system("[ ! -d {} ] && mkdir -p {}".format(Output_FilePath, Output_FilePath))
 Output_HWE_filter_prefix="{}_{}_HWE_Filter_p-value_{}".format(disease, Amount_of_Samples, P_value)
 
