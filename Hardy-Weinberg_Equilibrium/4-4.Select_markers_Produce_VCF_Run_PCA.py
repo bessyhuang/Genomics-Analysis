@@ -17,7 +17,7 @@ disease = 'Fabry_Aging'
 Amount_of_Samples = '186'
 P_value = '0.0002'
 
-CaseControl_table = 'Fabry_record_table_93.txt'
+CaseControl_table = 'CaseControl_record_table_186.txt'
 
 Input_VCF_FilePath = '/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/Replaced_header_vcf/'
 Input_VCF_FileName = 'new_Fabry_Aging_186.merge.vcf'
@@ -112,6 +112,7 @@ def Final_selected_markers_dict(MarkersSet_type, HWE_ALL_dict, HWE_AFF_dict, HWE
 	elif MarkersSet_type == 'Remove ALL_markers (Remove significant == Save good quality)' or MarkersSet_type == '8':
 		return HWE_ALL_dict
 
+
 # Read selected markers file (HWE p-value < 0.0001)
 with open(Input_HWE_FilePath + Input_HWE_filtered_ALL_FileName, 'r') as f_in:
 	content_list = f_in.readlines()
@@ -204,6 +205,7 @@ for row in Modify_SexCode_fam_file:
 	f_out.write("{} {} {} {} {} {}\n".format(FamilyID, Within_familyID, father, mother, Sex, Phenotype))
 f_out.close()
 #----- END:	Modify `.fam` -----#
+
 
 os.system("/staging/reserve/aging/chia2831/bin/plink --bfile {} --pca --out {}".format(Output_FilePath + Output_HWE_filtered_bfile_prefix, Output_FilePath + Output_PCA_HWE_filtered_prefix))
 
