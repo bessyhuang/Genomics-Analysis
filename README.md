@@ -1,2 +1,2 @@
-# Sequencing-Analysis-Report
-Automatically generate sequencing analysis reports.
+# Genomics-Analysis
+Automatically generate genomics analysis reports.
