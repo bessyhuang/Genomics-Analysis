@@ -33,8 +33,8 @@ print("製作 vcf.gz 和 vcf.gz.tbi ==> Finish!")
 
 
 # 2. 擷取特定 chromosome position
-pos_minus_10K = int(pos) - 20000
-pos_plus_10K = int(pos) + 20000
+pos_minus_10K = int(pos) - 10000
+pos_plus_10K = int(pos) + 10000
 print("The range of chromosome positions to be extracted \t=> {} ~ {}".format(pos_minus_10K, pos_plus_10K))
 
 
