@@ -2,16 +2,16 @@ import os
 
 CaseControl_table = 'CaseControl_record_table_186.txt'
 
-FilePath = '/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/HardyWeinberg_result/Extract_Specific_Gene_Position/'
+FilePath = '/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/HardyWeinberg_result/Extract_Specific_Gene_Position/chrX_20K/'
 Filename = 'new_FabryDisease_186_GLA_IVS4_gene.merge.vcf'
 
-Disease = 'FD_Aging'
+Disease = 'FD'
 Amount_of_Samples = '186'
 GeneName = 'GLA_IVS4'
 Output_File_prefix = '{}_{}_{}_gene.merge'.format(Disease, Amount_of_Samples, GeneName)
 
 
-Output_FilePath = '/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/HardyWeinberg_result/Extract_Specific_Gene_Position/Haploview_input_file/'
+Output_FilePath = '/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/HardyWeinberg_result/Extract_Specific_Gene_Position/chrX_20K/Haploview_input_file_IVS4/'
 Output_Filename = '{}_{}_{}_gene_for_Haploview'.format(Disease, Amount_of_Samples, GeneName)
 os.system('[ ! -d {} ] && mkdir -p {}'.format(Output_FilePath, Output_FilePath))
 

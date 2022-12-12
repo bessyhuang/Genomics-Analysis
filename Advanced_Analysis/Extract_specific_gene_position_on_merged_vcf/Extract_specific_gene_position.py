@@ -1,7 +1,7 @@
 import os
 
-FilePath = '/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/HardyWeinberg_result/Create_HWE_filtered_VCF/'
-Filename = 'Fabry_Aging_186_HWE_Filtered_p-value_0.0002_Expt8.vcf'
+FilePath = '/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/HardyWeinberg_result/Extract_Specific_Gene_Position/'
+Filename = 'chrX_Fabry.vcf'
 Amount_of_Samples = '186'
 
 
@@ -12,7 +12,7 @@ chr_N = input('Please Enter "chromosome" (e.g. chrX)\n > ')
 pos = input('Please Enter "position" (e.g. 101399747)\n > ')
 
 
-Output_FilePath = '/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/HardyWeinberg_result/Extract_Specific_Gene_Position/'
+Output_FilePath = '/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/HardyWeinberg_result/Extract_Specific_Gene_Position/chrX_20K/'
 os.system('[ ! -d {} ] && mkdir -p {}'.format(Output_FilePath, Output_FilePath))
 
 Output_merge_vcfgz = 'new_FabryDisease_{}.merge.vcf.gz'.format(Amount_of_Samples)
@@ -33,8 +33,8 @@ print("製作 vcf.gz 和 vcf.gz.tbi ==> Finish!")
 
 
 # 2. 擷取特定 chromosome position
-pos_minus_10K = int(pos) - 10000
-pos_plus_10K = int(pos) + 10000
+pos_minus_10K = int(pos) - 20000
+pos_plus_10K = int(pos) + 20000
 print("The range of chromosome positions to be extracted \t=> {} ~ {}".format(pos_minus_10K, pos_plus_10K))
 
 
