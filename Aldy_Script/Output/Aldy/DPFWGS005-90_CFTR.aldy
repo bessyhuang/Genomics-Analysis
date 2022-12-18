@@ -1,0 +1,4 @@
+#Sample	Gene	SolutionID	Major	Minor	Copy	Allele	Location	Type	Coverage	Effect	dbSNP	Code	Status
+#Solution 1: *G1069R, *normal
+DPFWGS005-90	CFTR	1	*G1069R/*normal	G1069R;normal	0	G1069R	117611645	G>A	-1	G1069R	rs200321110	
+DPFWGS005-90	CFTR	1	*G1069R/*normal	G1069R;normal	1	normal							

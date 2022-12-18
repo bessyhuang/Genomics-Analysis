@@ -1,0 +1,4 @@
+#Sample	Gene	SolutionID	Major	Minor	Copy	Allele	Location	Type	Coverage	Effect	dbSNP	Code	Status
+#Solution 1: *1.002, *1.002
+DPFWGS005-90	CYP1A2	1	*1B/*1B	1.002;1.002	0	1.002	74755084	T>C	-1	N516N	rs2470890	
+DPFWGS005-90	CYP1A2	1	*1B/*1B	1.002;1.002	1	1.002	74755084	T>C	-1	N516N	rs2470890	

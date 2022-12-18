@@ -1,0 +1,4 @@
+#Sample	Gene	SolutionID	Major	Minor	Copy	Allele	Location	Type	Coverage	Effect	dbSNP	Code	Status
+#Solution 1: *normal, *normal
+DPFWGS005-92	CFTR	1	*normal/*normal	normal;normal	0	normal							
+DPFWGS005-92	CFTR	1	*normal/*normal	normal;normal	1	normal							
