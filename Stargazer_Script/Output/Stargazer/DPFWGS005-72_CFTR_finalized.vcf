@@ -1,0 +1,48 @@
+##fileformat=VCFv4.2
+##fileDate=20221218
+##source=Stargazer_v1.0.8_fixed_hg38
+##reference=hg19-CFTR*1
+##INFO=<ID=FE,Number=A,Type=String,Description="Functional Effect">
+##INFO=<ID=PS,Number=1,Type=String,Description="Phasing Status (A, in preparation; B1, ready for phasing as is; B2, ready for phasing after conformation to reference VCF; C1, excluded from phasing because marker is absent in reference VCF; C2, excluded from phasing because marker has different REF allele; C3, excluded from phasing because marker has no overlapping ALT alleles; D1, statistically phased; D2, manually phased with certainty; D3, manually phased without certainty; D4, already phased; D5, manually phased by extension; E, omitted during statistical phasing)">
+##INFO=<ID=RV,Number=A,Type=String,Description="Reverting Variation">
+##INFO=<ID=SO,Number=A,Type=String,Description="=Sequence Ontology">
+##INFO=<ID=VI,Number=A,Type=String,Description="Variant Impact">
+##FILTER=<ID=IA,Description="Invalid Allele">
+##FILTER=<ID=s50,Description="Less than 50% of samples have data">
+##FORMAT=<ID=AD,Number=R,Type=Integer,Description="Allelic depths for the ref and alt alleles in the order listed">
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+##FORMAT=<ID=HE,Number=4,Type=Integer,Description="Matching scores computed by the phase-by-extension algorithm">
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	DPFWGS005-72
+7	117489707	.	A	C	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:11,24
+7	117490312	.	T	TAC	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	1/1:0,11
+7	117495529	.	C	T	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:18,9
+7	117501776	.	C	A	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:16,9
+7	117505301	.	AAGGTT	A	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:19,4
+7	117505311	.	T	TCCTAA	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:19,5
+7	117515520	.	A	T	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:32,5
+7	117515522	.	C	G	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:31,5
+7	117515748	.	A	G	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:39,5
+7	117517200	.	C	T	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:15,9
+7	117518161	.	G	C	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:16,17
+7	117527807	.	G	A	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:8,2
+7	117528827	.	C	T	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:5,2
+7	117528828	.	A	G	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:5,2
+7	117550329	.	C	CA	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:16,13
+7	117556512	.	CT	C	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	1/1:0,6
+7	117576427	.	G	T	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:27,27
+7	117583314	.	T	TC	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:13,10
+7	117583388	.	T	C	.	PASS	PS=C1;VI=low_impact;RV=revertant_false;SO=intron_variant;FE=no_effect	GT:AD	1/1:0,31
+7	117583390	.	G	C	.	PASS	PS=C1;VI=low_impact;RV=revertant_false;SO=intron_variant;FE=no_effect	GT:AD	1/1:0,33
+7	117584386	.	G	A	.	PASS	PS=C1;VI=low_impact;RV=revertant_false;SO=intron_variant;FE=no_effect	GT:AD	1/1:0,40
+7	117587820	.	A	G	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:21,15
+7	117591092	.	C	T	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	1/1:0,25
+7	117596181	.	G	GC	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	1/1:0,37
+7	117612023	.	GTATATATATATATA	G,GTATATATATATATATATA	.	PASS	PS=C1;VI=unknown_impact,unknown_impact;RV=revertant_unknown,revertant_unknown;SO=unknown_variant,unknown_variant;FE=unknown_effect,unknown_effect	GT:AD	1/2:0,13,4
+7	117616235	.	C	CT	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	1/1:0,40
+7	117623363	.	G	C	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	1/1:0,30
+7	117636941	.	C	T	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:27,3
+7	117636942	.	A	G	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:27,3
+7	117636963	.	C	T	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:24,3
+7	117636964	.	C	G	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:24,3
+7	117647423	.	T	C	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	1/1:0,23
+7	117649519	.	A	T	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:14,12

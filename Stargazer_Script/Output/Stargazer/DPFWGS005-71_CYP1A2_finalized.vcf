@@ -1,0 +1,43 @@
+##fileformat=VCFv4.2
+##fileDate=20221218
+##source=Stargazer_v1.0.8_fixed_hg38
+##reference=hg19-CYP1A2*1
+##INFO=<ID=FE,Number=A,Type=String,Description="Functional Effect">
+##INFO=<ID=PS,Number=1,Type=String,Description="Phasing Status (A, in preparation; B1, ready for phasing as is; B2, ready for phasing after conformation to reference VCF; C1, excluded from phasing because marker is absent in reference VCF; C2, excluded from phasing because marker has different REF allele; C3, excluded from phasing because marker has no overlapping ALT alleles; D1, statistically phased; D2, manually phased with certainty; D3, manually phased without certainty; D4, already phased; D5, manually phased by extension; E, omitted during statistical phasing)">
+##INFO=<ID=RV,Number=A,Type=String,Description="Reverting Variation">
+##INFO=<ID=SO,Number=A,Type=String,Description="=Sequence Ontology">
+##INFO=<ID=VI,Number=A,Type=String,Description="Variant Impact">
+##FILTER=<ID=IA,Description="Invalid Allele">
+##FILTER=<ID=s50,Description="Less than 50% of samples have data">
+##FORMAT=<ID=AD,Number=R,Type=Integer,Description="Allelic depths for the ref and alt alleles in the order listed">
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+##FORMAT=<ID=HE,Number=4,Type=Integer,Description="Matching scores computed by the phase-by-extension algorithm">
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	DPFWGS005-71
+15	74746141	.	G	T	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:20,21
+15	74746626	.	G	A	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:25,20
+15	74746892	.	T	C	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:23,18
+15	74747271	.	AT	A	.	PASS	PS=C1;VI=low_impact;RV=revertant_false;SO=upstream_gene_variant;FE=no_effect	GT:AD	0/1:25,16
+15	74747691	.	AT	A	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:11,20
+15	74747935	.	A	G	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:17,11
+15	74748031	.	T	C	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:23,16
+15	74749000	.	T	G	.	PASS	PS=C1;VI=low_impact;RV=revertant_false;SO=intron_variant;FE=no_effect	GT:AD	0/1:12,22
+15	74749576	.	C	A	.	PASS	PS=C1;VI=low_impact;RV=revertant_false;SO=intron_variant;FE=no_effect	GT:AD	0/1:22,17
+15	74750940	.	C	T	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:15,22
+15	74752152	.	C	T	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:20,28
+15	74752870	.	C	CT	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:7,8
+15	74752895	.	C	A	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:14,5
+15	74753351	.	T	C	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:22,17
+15	74753733	.	CA	C	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:20,22
+15	74754336	.	G	T	.	PASS	PS=C1;VI=low_impact;RV=revertant_false;SO=intron_variant;FE=no_effect	GT:AD	0/1:14,19
+15	74754427	.	CA	C	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:12,17
+15	74755085	.	T	C	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	1/1:0,51
+15	74755085	rs2470890	T	C	.	PASS	PS=D2;VI=low_impact;RV=revertant_true;SO=synonymous_variant;FE=N516#	GT:AD	1|1:0,0
+15	74755259	.	A	G	.	PASS	PS=C1;VI=low_impact;RV=revertant_false;SO=3_prime_UTR_variant;FE=no_effect	GT:AD	0/1:16,24
+15	74755350	.	CA	C	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:15,18
+15	74755448	.	CT	C	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:15,13
+15	74756412	.	C	G	.	PASS	PS=C1;VI=low_impact;RV=revertant_false;SO=3_prime_UTR_variant;FE=no_effect	GT:AD	0/1:25,19
+15	74757341	.	CA	C	.	PASS	PS=C1;VI=unknown_impact;RV=revertant_unknown;SO=unknown_variant;FE=unknown_effect	GT:AD	0/1:14,11
+15	74758166	.	T	C	.	PASS	PS=C1;VI=low_impact;RV=revertant_false;SO=downstream_gene_variant;FE=no_effect	GT:AD	1/1:0,36
+15	74758513	.	T	C	.	PASS	PS=C1;VI=low_impact;RV=revertant_false;SO=downstream_gene_variant;FE=no_effect	GT:AD	0/1:21,25
+15	74758667	.	A	G	.	PASS	PS=C1;VI=low_impact;RV=revertant_false;SO=downstream_gene_variant;FE=no_effect	GT:AD	0/1:26,20
+15	74759361	.	T	A	.	PASS	PS=C1;VI=low_impact;RV=revertant_false;SO=downstream_gene_variant;FE=no_effect	GT:AD	0/1:15,19
