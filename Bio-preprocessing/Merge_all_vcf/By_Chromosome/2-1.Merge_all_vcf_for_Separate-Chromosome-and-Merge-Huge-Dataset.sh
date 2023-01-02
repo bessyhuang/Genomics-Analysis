@@ -1,17 +1,27 @@
 #!/bin/bash
 
-Case_Control_list='Case_Control_list.txt'
+filename='2000_genome.samplelist'
+samplelist_dir='/staging2/reserve/flagship/chia2831/TEST_2000_genome_VCFgz/Genomics-Analysis/Bio-preprocessing/Merge_all_vcf/By_Sample/'
 
-Input_FilePath='/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/'
+recode_vcf_filename='2000_genome_recode_vcf.samplelist'			# Auto Generate
+recode_vcf_samplelist_dir='/staging2/reserve/flagship/chia2831/TEST_2000_genome_VCFgz/Genomics-Analysis/Bio-preprocessing/Merge_all_vcf/By_Sample/'
+recode_vcf_dir='/staging2/reserve/flagship/chia2831/TEST_2000_genome_VCFgz/recode_vcf/'
 
-Output_VCFgz_FilePath='/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/recode_VCFgz_tbi/'
+
+## Check for dir, if not found create it using the mkdir ##
+create_dir='/staging2/reserve/flagship/chia2831/TEST_2000_genome_VCFgz/Merge_2000_genome_ByChr/'
+[ ! -d "$create_dir" ] && mkdir -p "$create_dir"
+output_path=${create_dir}
+
+Output_VCFgz_FilePath='/staging2/reserve/flagship/chia2831/TEST_2000_genome_VCFgz/Merge_2000_genome_ByChr/recode_VCFgz_tbi/'
 [ ! -d "$Output_VCFgz_FilePath" ] && mkdir -p "$Output_VCFgz_FilePath"
 
-Output_FilePath='/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/merged_recode_vcf/'
+Output_FilePath='/staging2/reserve/flagship/chia2831/TEST_2000_genome_VCFgz/Merge_2000_genome_ByChr/merged_recode_vcf/'
 [ ! -d "$Output_FilePath" ] && mkdir -p "$Output_FilePath"
 
-disease='Fabry_Aging'
-Amount_of_Samples='186'
+
+disease='Genome'
+Amount_of_Samples='2000'
 
 
 ## Check for dir, if not found create it using the mkdir ##
@@ -27,9 +37,9 @@ done
 
 #----- START:	製作 vcf.gz 和 vcf.gz.tbi -----#
 while IFS='' read -r line || [[ -n "$line" ]]; do
-	/staging/reserve/aging/chia2831/bin/bgzip -c ${Input_FilePath}${line}_DP10_MAF21.vcf.recode.vcf > ${Output_VCFgz_FilePath}${line}_DP10_MAF21.vcf.recode.vcf.gz
+	/staging/reserve/aging/chia2831/bin/bgzip -c ${recode_vcf_dir}${line}_DP10_MAF21.vcf.recode.vcf > ${Output_VCFgz_FilePath}${line}_DP10_MAF21.vcf.recode.vcf.gz
 	/staging/reserve/aging/chia2831/bin/tabix -p vcf ${Output_VCFgz_FilePath}${line}_DP10_MAF21.vcf.recode.vcf.gz
-done < $Case_Control_list
+done < ${samplelist_dir}${filename}
 #----- END:     製作 vcf.gz 和 vcf.gz.tbi -----#
 
 
@@ -42,5 +52,5 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
 
 		/staging/reserve/aging/chia2831/bin/bcftools view ${Output_VCFgz_FilePath}${line}_DP10_MAF21.vcf.recode.vcf.gz --regions ${i} -o ${Output_FilePath_by_Chr}${Output_chrN_VCF} -Ov
 	done
-done < $Case_Control_list
+done < ${samplelist_dir}${filename}
 #----- END:	拆 Chromosome -----#
