@@ -1,17 +1,19 @@
 #!/bin/bash
 
 ChrN='chr7'
-disease='Fabry_Aging'
-Amount_of_Samples='186'
-Case_Control_list="${ChrN}_Case_Control_list.txt"
+disease='Genome'
+Amount_of_Samples='2000'
 
-Input_FilePath='/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/merged_recode_vcf/chr7/'
-Output_FilePath='/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/merged_recode_vcf/All_chr/'
+filename="${ChrN}_2000_genome.samplelist"
+samplelist_dir='/staging2/reserve/flagship/chia2831/TEST_2000_genome_VCFgz/Genomics-Analysis/Bio-preprocessing/Merge_all_vcf/By_Chromosome/'
+
+Input_FilePath='/staging2/reserve/flagship/chia2831/TEST_2000_genome_VCFgz/Merge_2000_genome_ByChr/merged_recode_vcf/chr7/'
+Output_FilePath='/staging2/reserve/flagship/chia2831/TEST_2000_genome_VCFgz/Merge_2000_genome_ByChr/merged_recode_vcf/All_chr/'
 [ ! -d "$Output_FilePath" ] && mkdir -p "$Output_FilePath"
 
 
-ls ${Input_FilePath} > ${Case_Control_list}
-sed -e 's/^/\/staging\/reserve\/aging\/chia2831\/FabryDisease\/Merge_Fabry_Aging_total_186\/merged_recode_vcf\/chr7\//' -i ${Case_Control_list}
+ls ${Input_FilePath} > ${samplelist_dir}${filename}
+sed "s|^|$Input_FilePath|g" -i ${samplelist_dir}${filename}
 
 # Merge Each chromosome	VCF file
-/staging/reserve/aging/chia2831/bin/bcftools merge -0 -l ${Case_Control_list} --threads 50 --force-samples --no-index -Ov -o ${Output_FilePath}${disease}_${Amount_of_Samples}_${ChrN}.merge.vcf
+/staging/reserve/aging/chia2831/bin/bcftools merge -0 -l ${filename} --threads 50 --force-samples --no-index -Ov -o ${Output_FilePath}${disease}_${Amount_of_Samples}_${ChrN}.merge.vcf

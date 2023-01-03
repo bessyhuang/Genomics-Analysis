@@ -1,10 +1,10 @@
 #!/bin/bash
 
-disease='Fabry_Aging'
-Amount_of_Samples='186'
+disease='Genome'
+Amount_of_Samples='2000'
 
-Input_FilePath='/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/merged_recode_vcf/All_chr/'
-Output_FilePath='/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_Aging_total_186/merged_recode_vcf/All_chr/Final_result/'
+Input_FilePath='/staging2/reserve/flagship/chia2831/TEST_2000_genome_VCFgz/Merge_2000_genome_ByChr/merged_recode_vcf/All_chr/'
+Output_FilePath='/staging2/reserve/flagship/chia2831/TEST_2000_genome_VCFgz/Merge_2000_genome_ByChr/merged_recode_vcf/All_chr/FinalResult_here/'
 [ ! -d "$Output_FilePath" ] && mkdir -p "$Output_FilePath"
 
 
