@@ -1,5 +1,7 @@
 #!/bin/bash
 
+module load biology/bcftools/1.13
+
 filename='2000_genome.samplelist'
 samplelist_dir='/staging2/reserve/flagship/chia2831/TEST_2000_genome_VCFgz/Genomics-Analysis/Bio-preprocessing/Merge_all_vcf/By_Sample/'
 
@@ -31,4 +33,4 @@ ls ${recode_vcf_dir} > ${samplelist_dir}${recode_vcf_filename}
 sed "s|^|$recode_vcf_dir|g" -i ${samplelist_dir}${recode_vcf_filename}
 
 # Merge all vcf
-/staging/reserve/aging/chia2831/bin/bcftools merge -0 -l ${recode_vcf_samplelist_dir}${recode_vcf_filename} --threads 50 --force-samples --no-index -Ov -o ${output_path}${disease}_${Amount_of_Samples}.merge.vcf
+bcftools merge -0 -l ${recode_vcf_samplelist_dir}${recode_vcf_filename} --threads 50 --force-samples --no-index -Ov -o ${output_path}${disease}_${Amount_of_Samples}.merge.vcf

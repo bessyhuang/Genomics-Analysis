@@ -1,10 +1,11 @@
 #!/bin/bash
 
-filename='2000_genome.samplelist'
-samplelist_dir='/staging2/reserve/flagship/chia2831/TEST_2000_genome_VCFgz/Genomics-Analysis/Bio-preprocessing/Merge_all_vcf/By_Sample/'
+module load biology/bcftools/1.13
+module load biology/Samtools/1.15.1
 
-recode_vcf_filename='2000_genome_recode_vcf.samplelist'			# Auto Generate
-recode_vcf_samplelist_dir='/staging2/reserve/flagship/chia2831/TEST_2000_genome_VCFgz/Genomics-Analysis/Bio-preprocessing/Merge_all_vcf/By_Sample/'
+
+filename='2000_genome.samplelist'
+samplelist_dir='/staging2/reserve/flagship/chia2831/TEST_2000_genome_VCFgz/Genomics-Analysis/Bio-preprocessing/Merge_all_vcf/By_Chromosome/'
 recode_vcf_dir='/staging2/reserve/flagship/chia2831/TEST_2000_genome_VCFgz/recode_vcf/'
 
 
@@ -37,8 +38,8 @@ done
 
 #----- START:	製作 vcf.gz 和 vcf.gz.tbi -----#
 while IFS='' read -r line || [[ -n "$line" ]]; do
-	/staging/reserve/aging/chia2831/bin/bgzip -c ${recode_vcf_dir}${line}_DP10_MAF21.vcf.recode.vcf > ${Output_VCFgz_FilePath}${line}_DP10_MAF21.vcf.recode.vcf.gz
-	/staging/reserve/aging/chia2831/bin/tabix -p vcf ${Output_VCFgz_FilePath}${line}_DP10_MAF21.vcf.recode.vcf.gz
+	bgzip -c ${recode_vcf_dir}${line}_DP10_MAF21.vcf.recode.vcf > ${Output_VCFgz_FilePath}${line}_DP10_MAF21.vcf.recode.vcf.gz
+	tabix -p vcf ${Output_VCFgz_FilePath}${line}_DP10_MAF21.vcf.recode.vcf.gz
 done < ${samplelist_dir}${filename}
 #----- END:     製作 vcf.gz 和 vcf.gz.tbi -----#
 
@@ -50,7 +51,7 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
 		Output_FilePath_by_Chr="${Output_FilePath}${i}/"
 		Output_chrN_VCF="${line}_${i}.recode.vcf"
 
-		/staging/reserve/aging/chia2831/bin/bcftools view ${Output_VCFgz_FilePath}${line}_DP10_MAF21.vcf.recode.vcf.gz --regions ${i} -o ${Output_FilePath_by_Chr}${Output_chrN_VCF} -Ov
+		bcftools view ${Output_VCFgz_FilePath}${line}_DP10_MAF21.vcf.recode.vcf.gz --regions ${i} -o ${Output_FilePath_by_Chr}${Output_chrN_VCF} -Ov
 	done
 done < ${samplelist_dir}${filename}
 #----- END:	拆 Chromosome -----#

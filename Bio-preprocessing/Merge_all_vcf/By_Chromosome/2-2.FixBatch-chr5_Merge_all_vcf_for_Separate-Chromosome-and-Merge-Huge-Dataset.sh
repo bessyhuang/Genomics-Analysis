@@ -1,5 +1,7 @@
 #!/bin/bash
 
+module load biology/bcftools/1.13
+
 ChrN='chr5'
 disease='Genome'
 Amount_of_Samples='2000'
@@ -16,4 +18,4 @@ ls ${Input_FilePath} > ${samplelist_dir}${filename}
 sed "s|^|$Input_FilePath|g" -i ${samplelist_dir}${filename}
 
 # Merge Each chromosome	VCF file
-/staging/reserve/aging/chia2831/bin/bcftools merge -0 -l ${filename} --threads 50 --force-samples --no-index -Ov -o ${Output_FilePath}${disease}_${Amount_of_Samples}_${ChrN}.merge.vcf
+bcftools merge -0 -l ${filename} --threads 50 --force-samples --no-index -Ov -o ${Output_FilePath}${disease}_${Amount_of_Samples}_${ChrN}.merge.vcf

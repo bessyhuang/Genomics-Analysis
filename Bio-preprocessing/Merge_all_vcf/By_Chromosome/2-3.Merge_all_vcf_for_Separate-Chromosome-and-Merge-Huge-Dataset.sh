@@ -1,5 +1,7 @@
 #!/bin/bash
 
+module load biology/bcftools/1.13
+
 disease='Genome'
 Amount_of_Samples='2000'
 
@@ -9,4 +11,4 @@ Output_FilePath='/staging2/reserve/flagship/chia2831/TEST_2000_genome_VCFgz/Merg
 
 
 # Merge Each chromosome	VCF file
-/staging/reserve/aging/chia2831/bin/bcftools concat ${Input_FilePath}${disease}_${Amount_of_Samples}_chr{1..25}.merge.vcf -Oz -o  ${Output_FilePath}${disease}_${Amount_of_Samples}_Genome.merge.vcf.gz
+bcftools concat ${Input_FilePath}${disease}_${Amount_of_Samples}_chr{1..25}.merge.vcf -Oz -o  ${Output_FilePath}${disease}_${Amount_of_Samples}_Genome.merge.vcf.gz
