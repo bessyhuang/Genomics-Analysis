@@ -29,8 +29,8 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
 done < ${samplelist_dir}${filename}
 
 
-ls ${recode_vcf_dir} > ${samplelist_dir}${recode_vcf_filename}
-sed "s|^|$recode_vcf_dir|g" -i ${samplelist_dir}${recode_vcf_filename}
+ls ${recode_vcf_dir} > ${recode_vcf_samplelist_dir}${recode_vcf_filename}
+sed "s|^|$recode_vcf_dir|g" -i ${recode_vcf_samplelist_dir}${recode_vcf_filename}
 
 # Merge all vcf
 bcftools merge -0 -l ${recode_vcf_samplelist_dir}${recode_vcf_filename} --threads 50 --force-samples --no-index -Ov -o ${output_path}${disease}_${Amount_of_Samples}.merge.vcf
