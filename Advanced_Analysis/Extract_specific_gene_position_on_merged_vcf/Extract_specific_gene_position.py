@@ -44,7 +44,7 @@ with open(Output_FilePath + Output_chrN_vcf, 'r') as f:
 	while line != '':
 		if '#' in line:
 			f_out.write(line)
-		elif chr_N in line:
+		elif str(chr_N + '\t') in line:
 			line_list = line.split('\t')
 			print(line_list[0], line_list[1])
 			if pos_minus_10K <= int(line_list[1]) <= pos_plus_10K:

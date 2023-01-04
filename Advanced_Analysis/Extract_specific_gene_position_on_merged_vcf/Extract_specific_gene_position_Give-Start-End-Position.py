@@ -1,8 +1,9 @@
 import os
 
-FilePath = '/Users/bessyhuang/Downloads/Fabry_stat/'
-Filename = 'chrX_Fabry.vcf'
-Amount_of_Samples = '93'
+FilePath = '/staging2/reserve/flagship/chia2831/TEST_2000_genome_VCFgz/Merge_2000_genome_ByChr/merged_recode_vcf/All_chr/FinalResult_here/Replaced_header_vcf/'
+Filename = 'new_Genome_2000.merge.vcf'
+Disease = 'Genome'
+Amount_of_Samples = '2000'
 
 
 # 擷取特定 chromosome
@@ -11,10 +12,10 @@ chr_N = input('Please Enter "chromosome" (e.g. chrX)\n > ')
 pos1 = input('Please Enter "position START" (e.g. 101399744)\n > ')
 pos2 = input('Please Enter "position END" (e.g. 101399800)\n > ')
 
-Output_FilePath = '/Users/bessyhuang/Downloads/Fabry_stat/Extract_Specific_Gene_Position/'
+Output_FilePath = '/staging2/reserve/flagship/chia2831/TEST_2000_genome_VCFgz/Merge_2000_genome_ByChr/merged_recode_vcf/All_chr/FinalResult_here/Replaced_header_vcf/Extract_Specific_Gene_Position/'
 os.system('[ ! -d {} ] && mkdir -p {}'.format(Output_FilePath, Output_FilePath))
 
-Output_gene_pos_vcf = 'new_FabryDisease_{}_{}-{}_gene.merge.vcf'.format(GeneName, pos1, pos2)
+Output_gene_pos_vcf = 'new_{}_{}_{}-{}_gene.merge.vcf'.format(Disease, GeneName, pos1, pos2)
 
 
 # 2. 擷取特定 chromosome position
@@ -31,7 +32,7 @@ with open(FilePath + Filename, 'r') as f:
 	while line != '':
 		if '#' in line:
 			f_out.write(line)
-		elif chr_N in line:
+		elif str(chr_N + '\t') in line:
 			line_list = line.split('\t')
 			print(line_list[0], line_list[1])
 			if pos_start <= int(line_list[1]) <= pos_end:
@@ -39,6 +40,7 @@ with open(FilePath + Filename, 'r') as f:
 			else:
 				pass
 		else:
-			print(line)
+			pass
+			#print(line)
 		line = f.readline()
 f_out.close()
