@@ -2,11 +2,11 @@ from collections import defaultdict
 import os
 
 
-Input_FilePath  = '/staging/reserve/aging/chia2831/FabryDisease/Fabry_Data_93/recode_vcf/'
-Output_FilePath = '/staging/reserve/aging/chia2831/FabryDisease/Fabry_Data_93/Variant_QC_result/'
+Input_FilePath  = '/staging2/reserve/flagship/chia2831/TEST_2000_genome_VCFgz/recode_vcf/'
+Output_FilePath = '/staging2/reserve/flagship/chia2831/TEST_2000_genome_VCFgz/Variant_QC_result/'
 os.system('[ ! -d {} ] && mkdir -p {}'.format(Output_FilePath, Output_FilePath))
 
-Amount_of_Samples = '93'
+Amount_of_Samples = '3'
 VCF_samplelist = '{}_recode_vcf_samplelist.txt'.format(Amount_of_Samples)
 os.system('ls {} > {}{}'.format(Input_FilePath, Output_FilePath, VCF_samplelist))
 

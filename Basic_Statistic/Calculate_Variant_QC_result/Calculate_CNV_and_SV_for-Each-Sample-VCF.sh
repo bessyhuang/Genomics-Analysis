@@ -1,13 +1,14 @@
 #!/bin/bash
 
-filename='CaseControl_1-70.list'
+filename='takeda.samplelist'
+filename_path='/staging2/reserve/flagship/chia2831/TEST_2000_genome_VCFgz/Genomics-Analysis/Basic_Statistic/Calculate_Variant_QC_result/'
 
-Input_CNV_cns_dir='/staging2/reserve/flagship/chia2831/takeda/CNV_cns/'
-Output_CNV_dir='/staging2/reserve/flagship/chia2831/takeda/CNV_cns/CNV_info/'
+Input_CNV_cns_dir='/staging2/reserve/flagship/chia2831/TEST_2000_genome_VCFgz/Parabricks_CNVkit_CNV/CNV_cns/'
+Output_CNV_dir='/staging2/reserve/flagship/chia2831/TEST_2000_genome_VCFgz/Parabricks_CNVkit_CNV/CNV_cns/CNV_info/'
 [ ! -d "$Output_CNV_dir" ] && mkdir -p "$Output_CNV_dir"
 
-Input_SV_VCFgz_dir='/staging2/reserve/flagship/chia2831/takeda/SV_VCFgz/'
-Output_SV_dir='/staging2/reserve/flagship/chia2831/takeda/SV_VCFgz/SV_info/'
+Input_SV_VCFgz_dir='/staging2/reserve/flagship/chia2831/TEST_2000_genome_VCFgz/SV/SV_VCFgz/'
+Output_SV_dir='/staging2/reserve/flagship/chia2831/TEST_2000_genome_VCFgz/SV/SV_VCFgz/SV_info/'
 [ ! -d "$Output_SV_dir" ] && mkdir -p "$Output_SV_dir"
 
 
@@ -56,4 +57,4 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
 	#cat ${Input_SV_VCFgz_dir}${line}.cnv.vcf | grep '<INS>' | wc -l >> ${Output_SV_dir}SV_INS.txt  	
 	#cat ${Input_SV_VCFgz_dir}${line}.cnv.vcf | grep '<DEL>' | wc -l >> ${Output_SV_dir}SV_DEL.txt
 	#cat ${Input_SV_VCFgz_dir}${line}.cnv.vcf | grep '<BND>' | wc -l >> ${Output_SV_dir}SV_BND.txt
-done < $filename
+done < ${filename_path}${filename}
