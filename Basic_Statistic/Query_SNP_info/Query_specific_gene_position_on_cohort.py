@@ -1,8 +1,12 @@
 import os
 
-FilePath = '/staging/reserve/aging/chia2831/FabryDisease/Aging_HALST_Male_cohort/'
-Cohort_Filename = 'Aging_Male_list.txt'
-Amount_of_Samples = '148'
+
+vcf_path = '/staging2/reserve/flagship/chia2831/TEST_2000_genome_VCFgz/Merge_2000_genome/Replaced_header_vcf/'
+
+filename = 'filename.list'
+filename_path = '/staging2/reserve/flagship/chia2831/TEST_2000_genome_VCFgz/Genomics-Analysis/Basic_Statistic/Query_SNP_info/'
+Disease = 'Genome'
+Amount_of_Samples = '3'
 
 
 # 擷取特定 chromosome
@@ -11,22 +15,21 @@ chr_N = input('Please Enter "chromosome" (e.g. chrX)\n > ')
 pos = input('Please Enter "position" (e.g. 101399747)\n > ')
 
 
-Output_FilePath = '/staging/reserve/aging/chia2831/FabryDisease/Aging_HALST_Male_cohort/Query_Specific_Gene_Position/'
+Output_FilePath = '/staging2/reserve/flagship/chia2831/TEST_2000_genome_VCFgz/Merge_2000_genome/Query_Specific_Gene_Position/'
 os.system('[ ! -d {} ] && mkdir -p {}'.format(Output_FilePath, Output_FilePath))
 
-
-Output_query_result_txt = 'Aging_{}_{}_{}_gene.txt'.format(Amount_of_Samples, chr_N, GeneName)
+Output_query_result_txt = '{}_{}_{}_{}_gene.txt'.format(Disease, Amount_of_Samples, chr_N, GeneName)
 
 
 # 擷取特定 chromosome position
 f_out = open(Output_FilePath + Output_query_result_txt, 'w')
-SampleID_list = [line.strip() for line in open(Cohort_Filename, 'r')]
+SampleID_list = [line.strip() for line in open(filename, 'r')]
 
 #for s in SampleID_list:
-#	os.system("gunzip {}{}.vcf.gz".format(FilePath, s))
+#	os.system("gunzip {}{}.vcf.gz".format(vcf_path, s))
 
 for s in SampleID_list:
-	with open(FilePath + s + '.vcf' , 'r') as f:
+	with open(vcf_path + s + '.vcf' , 'r') as f:
 		line = f.readline()
 		while line != '':
 			if '#' in line:
