@@ -1,5 +1,7 @@
 #!/bin/bash
 
+module load biology/Samtools/1.15.1
+
 filename='takeda.samplelist'
 filename_path='/staging2/reserve/flagship/chia2831/TEST_2000_genome_VCFgz/Genomics-Analysis/Basic_Statistic/Genetic_Quality_Assurance/'
 
@@ -17,15 +19,15 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
         echo -e "`ls ${bam_path} | grep ${line}`"
 
 	# stats
-	/staging/reserve/aging/chia2831/bin/samtools stats --thread 50 ${bam_path}${line}.bam > ${output_path}${line}.stats
+	samtools stats --thread 50 ${bam_path}${line}.bam > ${output_path}${line}.stats
 
 	# flagstat
-	/staging/reserve/aging/chia2831/bin/samtools flagstat --thread 50 ${bam_path}${line}.bam > ${output_path}${line}.flagstat
+	samtools flagstat --thread 50 ${bam_path}${line}.bam > ${output_path}${line}.flagstat
 
 	# coverage
-	/staging/reserve/aging/chia2831/bin/samtools coverage ${bam_path}${line}.bam > ${output_path}${line}.coverage
+	samtools coverage ${bam_path}${line}.bam > ${output_path}${line}.coverage
 
 	# depth
-	/staging/reserve/aging/chia2831/bin/samtools depth --thread 50 ${bam_path}${line}.bam | awk '{sum+=$3; sumsq+=$3*$3} END { print "Average = ",sum/NR; print "Stdev = ",sqrt(sumsq/NR - (sum/NR)**2)}' > ${output_path}${line}.avg_depth
+	samtools depth --thread 50 ${bam_path}${line}.bam | awk '{sum+=$3; sumsq+=$3*$3} END { print "Average = ",sum/NR; print "Stdev = ",sqrt(sumsq/NR - (sum/NR)**2)}' > ${output_path}${line}.avg_depth
 
 done < ${filename_path}${filename}
