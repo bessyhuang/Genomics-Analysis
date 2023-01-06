@@ -1,18 +1,20 @@
 #!/bin/bash
 
-filename='CaseControl_70.list'
-DirName='Merge_Fabry_total_70'
-current_dir='/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_total_70/'
+filename='takeda.samplelist'
+filename_path='/staging2/reserve/flagship/chia2831/TEST_2000_genome_VCFgz/Genomics-Analysis/Basic_Statistic/Genetic_Quality_Assurance/'
 
-mkdir /staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_total_70/Statistic_Data/
+bam_path='/staging2/reserve/flagship/chia2831/TEST_2000_genome_VCFgz/BAM/'
 
-bam_path='/staging/reserve/aging/chia2831/FabryDisease/Output/hg38/BAM/'
-output_path='/staging/reserve/aging/chia2831/FabryDisease/Merge_Fabry_total_70/Statistic_Data/'
+## Check for dir, if not found create it using the mkdir ##
+create_dir='/staging2/reserve/flagship/chia2831/TEST_2000_genome_VCFgz/Statistic_Data/'
+[ ! -d "$create_dir" ] && mkdir -p "$create_dir"
+output_path=${create_dir}
+
 
 while IFS='' read -r line || [[ -n "$line" ]]; do
 	# Check file exist or not
         echo "==> $line"
-        echo -e "`ls ${current_dir} | grep ${line}`"
+        echo -e "`ls ${bam_path} | grep ${line}`"
 
 	# stats
 	/staging/reserve/aging/chia2831/bin/samtools stats --thread 50 ${bam_path}${line}.bam > ${output_path}${line}.stats
@@ -26,4 +28,4 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
 	# depth
 	/staging/reserve/aging/chia2831/bin/samtools depth --thread 50 ${bam_path}${line}.bam | awk '{sum+=$3; sumsq+=$3*$3} END { print "Average = ",sum/NR; print "Stdev = ",sqrt(sumsq/NR - (sum/NR)**2)}' > ${output_path}${line}.avg_depth
 
-done < $filename
+done < ${filename_path}${filename}
