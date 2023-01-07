@@ -23,7 +23,7 @@ Output_query_result_txt = '{}_{}_{}_{}_gene.txt'.format(Disease, Amount_of_Sampl
 
 # 擷取特定 chromosome position
 f_out = open(Output_FilePath + Output_query_result_txt, 'w')
-SampleID_list = [line.strip() for line in open(filename, 'r')]
+SampleID_list = [line.strip() for line in open(filename_path + filename, 'r')]
 
 #for s in SampleID_list:
 #	os.system("gunzip {}{}.vcf.gz".format(vcf_path, s))
