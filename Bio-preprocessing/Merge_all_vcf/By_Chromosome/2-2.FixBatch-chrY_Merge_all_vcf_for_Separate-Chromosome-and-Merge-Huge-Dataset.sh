@@ -18,4 +18,4 @@ ls ${Input_FilePath} > ${samplelist_dir}${filename}
 sed "s|^|$Input_FilePath|g" -i ${samplelist_dir}${filename}
 
 # Merge Each chromosome VCF file
-bcftools merge -0 -l ${filename} --threads 50 --force-samples --no-index -Ov -o ${Output_FilePath}${disease}_${Amount_of_Samples}_${ChrN}.merge.vcf
+bcftools merge -0 -l ${samplelist_dir}${filename} --threads 50 --force-samples --no-index -Ov -o ${Output_FilePath}${disease}_${Amount_of_Samples}_${ChrN}.merge.vcf
